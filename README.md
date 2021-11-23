@@ -49,7 +49,7 @@ rm -rf ~/.cache/pypoetry
 
 ### Badges
 
-Open this `README.md` file with your favorite editor and use its _Search and Replace_ function. 
+Open this `README.md` file with your favorite editor and use its _Search and Replace_ function.
 Search for `distiller-based-plugin-template`  and replace it with the repository name.
 
 ### Package description
@@ -59,7 +59,7 @@ Open the `pyproject.toml` file and change the relevant fields in the first secti
 
 ### Making the source directory
 
-Create the source directory with the name of your choice. After that open the `pyproject.toml` file and 
+Create the source directory with the name of your choice. After that open the `pyproject.toml` file and
 replace `src` with the directory name int the `[tool.coverage.run]` section.
 
 In the `.pre-commit-config.yaml` file the `pylint` section has a `files: '^src/'` row. Replace
@@ -67,7 +67,7 @@ the `src` part with the source directory name.
 
 ### Install `pre-commit` hooks
 
-Use this command to install `pre-commit` hooks. They will run before each commit and will correct your files to meet 
+Use this command to install `pre-commit` hooks. They will run before each commit and will correct your files to meet
 the requirements:
 ```shell
 pre-commit install --hook-type commit-msg --overwrite
@@ -80,14 +80,14 @@ Run tests and calculating the coverage automatically:
    ```shell
    poetry run coverage run
    ```
-   
+
    Generating an html from the results
    ```shell
    poetry run coverage html
    ```
-   
+
    If your virtualenv is activated you can omit `poetry run` from the commands.
-   
+
    Here is the compact form:
    ```shell
    clear;coverage run;coverage html;coverage report

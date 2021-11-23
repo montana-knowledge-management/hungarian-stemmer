@@ -6,7 +6,7 @@ repos:
     hooks:
       - id: pyupgrade
         # TODO: migrate this to pyproject.toml
-        args: ['--py39-plus', '--exit-zero-even-if-changed']
+        args: ['--py38-plus', '--exit-zero-even-if-changed']
 
   - repo: https://github.com/psf/black
     rev: 21.4b0
@@ -32,7 +32,7 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0
     hooks:
-      - id: check-added-large-files
+#      - id: check-added-large-files
       - id: check-yaml
       - id: end-of-file-fixer
       - id: fix-byte-order-marker
