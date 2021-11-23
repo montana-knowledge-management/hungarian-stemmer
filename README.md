@@ -1,94 +1,80 @@
-# Template repository for distiller based projects
+# Repository for `hungarian-stemmer`
 
-[![tests](https://github.com/montana-knowledge-management/distiller-based-plugin-template/actions/workflows/ci.yml/badge.svg)](https://github.com/robust/actions)
-[![codecov](https://codecov.io/gh/montana-knowledge-management/distiller-based-plugin-template/branch/main/graph/badge.svg?token=KMYGW7NHWH)](https://codecov.io/gh/montana-knowledge-management/distiller-based-plugin-template)
+[![tests](https://github.com/montana-knowledge-management/hungarian-stemmer/actions/workflows/ci.yml/badge.svg)](https://github.com/robust/actions)
+[![codecov](https://codecov.io/gh/montana-knowledge-management/hungarian-stemmer/branch/main/graph/badge.svg?token=KMYGW7NHWH)](https://codecov.io/gh/montana-knowledge-management/hungarian-stemmer)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/montana-knowledge-management/distiller-based-plugin-template.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/montana-knowledge-management/distiller-based-plugin-template/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/montana-knowledge-management/distiller-based-plugin-template.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/montana-knowledge-management/distiller-based-plugin-template/context:python)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/montana-knowledge-management/hungarian-stemmer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/montana-knowledge-management/hungarian-stemmer/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/montana-knowledge-management/hungarian-stemmer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/montana-knowledge-management/hungarian-stemmer/context:python)
 
-## How to use this template?
+## How to use this package?
 
-### Install `poetry`
+### Install `hungarian-stemmer`
 
-If you didn't use `poetry` before, then you have to install it.
-The documentation can be found [here](https://python-poetry.org/docs/).
+For the simplest install simply run:
 
-1. Download the installer script somewhere:
-
-    **Note**: Make sure you don't have any virtual environment active in your terminal.
-    ```shell
-    curl -O https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py
-    ```
-2. Run the installation script:
-   ```shell
-   python3 install-poetry.py
-   ```
-   Pay attention to the script output, you might have to append the line below at the end of your `.bashrc` file.
-   ```shell
-   export PATH="$HOME/.poetry/bin:$PATH"
-   ```
-
-### Installing dependencies
-At this stage you should have poetry installed on your system. The next step is to create a virtual environment and install
-the project dependencies:
 ```shell
-poetry install
-```
-This command will create a `.venv` directory into the repository and install all dependeny.
-
-**Note**: If you are using Pycharm, then you should install the poetry plugin.
-
-#### Troubleshooting
-
-If `poetry` throws a `JSONEncodeEerror` you should clear the `poetry` cache:
-```shell
-rm -rf ~/.cache/pypoetry
+pip install hungarian-stemmer
 ```
 
-### Badges
+## Differences compared to `cyhunspell` repository
 
-Open this `README.md` file with your favorite editor and use its _Search and Replace_ function.
-Search for `distiller-based-plugin-template`  and replace it with the repository name.
+The `hungarian-stemmer` package is built on top of the well-known `cyhunspell` Python package,
+available [here](https://pypi.org/project/cyhunspell/). Therefore, the tool is capable of doing the same as the original
+tool, except for modifying (adding and removing) the dictionary, using bulk processes.
 
-### Package description
+The `hungarian-stemmer` fixes several issues present in the currently available `hunspell` for the Hungarian language.
+Such an example would be the overly extensive stemming often resulting in stems having a completely different meaning (
+see first row in the table), not handling the phrasal verbs well (second row), and experiencing a malfunction in
+stemming (third row).
+The following table shows some examples of the differences.
 
-Open the `pyproject.toml` file and change the relevant fields in the first section (`[tool.poetry]`):
-`<PACKAGENAME>`, `<DESCRIPTION>`
+|     word     |   hunspell   |    hungarian-stemmer    |
+|:------------:|:------------:|:-----------------------:|
+|    mással    |  más, ma, mi |           más           |
+|  megtörtént  |   történik   | megtörtént, megtörténik |
+| köztestületi | köztestületi |       köztestület       |
 
-### Making the source directory
+## Examples of usage
 
-Create the source directory with the name of your choice. After that open the `pyproject.toml` file and
-replace `src` with the directory name int the `[tool.coverage.run]` section.
+### Importing and instantiating HungarianStemmer object
 
-In the `.pre-commit-config.yaml` file the `pylint` section has a `files: '^src/'` row. Replace
-the `src` part with the source directory name.
+```python
+from hungarian_stemmer.hungarian_stemmer import HungarianStemmer
 
-### Install `pre-commit` hooks
-
-Use this command to install `pre-commit` hooks. They will run before each commit and will correct your files to meet
-the requirements:
-```shell
-pre-commit install --hook-type commit-msg --overwrite
-pre-commit install --hook-type=pre-commit --overwrite
+hunstem = HungarianStemmer()
 ```
 
-## Development
+### Stemming
 
-Run tests and calculating the coverage automatically:
-   ```shell
-   poetry run coverage run
-   ```
+```python
+hunstem.stem("megcsinálták")  # ("megcsinál",)
+```
 
-   Generating an html from the results
-   ```shell
-   poetry run coverage html
-   ```
+### Analyze
 
-   If your virtualenv is activated you can omit `poetry run` from the commands.
+```python
+hunstem.analyze(
+    "megcsinálták")  # ("ip:PREF sp:meg  st:csinál po:vrb ts:PRES_INDIC_INDEF_SG_3 " "is:PAST_INDIC_DEF_PL_3",)
+```
 
-   Here is the compact form:
-   ```shell
-   clear;coverage run;coverage html;coverage report
-   ```
+### Suggest
+
+```python
+hunstem.suggest(
+    "megcsinálták")  # ("megcsináltak","megcsinálták","megcsinálték","megcsináltál","megcsinálnák","megcsináltok","megcsináltuk","megcsinálják","meg csinálták","meg-csinálták",)
+```
+
+### Spell
+
+```python
+hunstem.spell("megcsinálták")  # True
+hunstem.spell("megcsinláták")  # False
+```
+
+### Suggest suffixes
+
+```python
+hunstem.suffix_suggest("megcsinálták")  # ("csinálnia","csinálja","csinálja", ...,)
+```

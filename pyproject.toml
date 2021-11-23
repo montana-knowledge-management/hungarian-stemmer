@@ -1,10 +1,10 @@
 # Main package description
 [tool.poetry]
-name = "<PACKAGENAME>"
+name = "hungarian_stemmer"
 version = "0.1.0"
-description = "<DESCRIPTION>"
+description = "Hungarian stemmer package to perform higher quality stemming in Hungarian."
 authors = [
-    "MONTANA Knowledge Management ltd. <info@distiller.dev>",
+    "MONTANA Knowledge Management Ltd. <info@distiller.dev>",
     "Daniel Nagy <daniel.nagy@montana.hu>",
     "Tamas Orosz <orosz.tamas@montana.hu>",
     "Krisztian Gado <gado.krisztian@montana.hu>",
@@ -15,7 +15,7 @@ license = "AGPL"
 
 # Project dependencies only
 [tool.poetry.dependencies]
-python = ">=3.8"
+python = ">=3.6.2"
 
 
 # Dependencies for developers
