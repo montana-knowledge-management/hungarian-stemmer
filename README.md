@@ -1,6 +1,6 @@
 # Repository for `hungarian-stemmer`
 
-[![tests](https://github.com/montana-knowledge-management/hungarian-stemmer/actions/workflows/ci.yml/badge.svg)](https://github.com/robust/actions)
+[![tests](https://github.com/montana-knowledge-management/hungarian-stemmer/actions/workflows/ci.yml/badge.svg)](https://github.com/montana-knowledge-management/hungarian-stemmer/actions)
 [![codecov](https://codecov.io/gh/montana-knowledge-management/hungarian-stemmer/branch/main/graph/badge.svg?token=KMYGW7NHWH)](https://codecov.io/gh/montana-knowledge-management/hungarian-stemmer)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
