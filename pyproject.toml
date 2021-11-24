@@ -1,15 +1,10 @@
 # Main package description
 [tool.poetry]
 name = "hungarian_stemmer"
-version = "0.1.0"
+version = "2021.1"
 description = "Hungarian stemmer package to perform higher quality stemming in Hungarian."
 authors = [
-    "MONTANA Knowledge Management Ltd. <info@distiller.dev>",
-    "Daniel Nagy <daniel.nagy@montana.hu>",
-    "Tamas Orosz <orosz.tamas@montana.hu>",
-    "Krisztian Gado <gado.krisztian@montana.hu>",
-    "Gergely Csanyi <csanyi.gergely@montana.hu>",
-    "Istvan Uveges <istavan.uveges@montana.hu>"
+    "MONTANA Knowledge Management Ltd. <info@distiller.dev>"
 ]
 license = "AGPL"
 
