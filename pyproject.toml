@@ -1,7 +1,7 @@
 # Main package description
 [tool.poetry]
 name = "hungarian_stemmer"
-version = "2021.1"
+version = "2022.1"
 description = "Hungarian stemmer package to perform higher quality stemming in Hungarian."
 authors = [
     "MONTANA Knowledge Management Ltd. <info@distiller.dev>"

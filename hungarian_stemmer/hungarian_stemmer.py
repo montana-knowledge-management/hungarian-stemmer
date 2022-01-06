@@ -4,7 +4,7 @@ from importlib_resources import files
 
 class HungarianStemmer:
     def __init__(self):
-        resource_path = str(files("resources") / "hu_HU")
+        resource_path = str(files("hungarian_stemmer") / "resources" / "hu_HU")
         self.hunspell = Hunspell(resource_path, resource_path)
 
     def stem(self, word: str, *args, **kwargs):
